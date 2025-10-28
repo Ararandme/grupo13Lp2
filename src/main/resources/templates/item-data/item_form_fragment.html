@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Item</title>
+    <!-- Tabs require the JS bundle; include this on the page (once) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+<div th:fragment="forms_item_fragment">
+
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">Registro de Artículo</h4>
+        </div>
+
+        <div class="card-body">
+
+            <!-- One form wraps both tabs -->
+            <form th:object="${skuAndDataLogistica}" th:action="@{/item-table}" method="post" id="itemForm">
+
+                <!-- Nav -->
+                <ul class="nav nav-tabs" id="itemTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="info-tab"
+                                data-bs-toggle="tab" data-bs-target="#info"
+                                type="button" role="tab" aria-controls="info" aria-selected="true">
+                            Información General
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="dim-tab"
+                                data-bs-toggle="tab" data-bs-target="#dim"
+                                type="button" role="tab" aria-controls="dim" aria-selected="false">
+                            Dimensiones
+                        </button>
+                    </li>
+                </ul>
+
+                <!-- Tab panes -->
+                <div class="tab-content p-3 border border-top-0 rounded-bottom" id="itemTabsContent">
+
+                    <!-- TAB 1 -->
+                    <div class="tab-pane fade show active" id="info" role="tabpanel" aria-labelledby="info-tab">
+                        <div class="mb-3">
+                            <label class="form-label">Descripción</label>
+                            <input type="text" th:field="*{sku.descripcion}" class="form-control" placeholder="Ingrese la descripción">
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Thumbnail</label>
+                            <input type="text" th:field="*{sku.thumbnail}" class="form-control" placeholder="URL de imagen">
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Fecha de Ingreso</label>
+                            <input type="date" th:field="*{sku.fechaIngreso}" class="form-control">
+                        </div>
+
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="checkbox" th:field="*{sku.estado}" id="estadoCheck">
+                            <label class="form-check-label" for="estadoCheck">Bloqueado</label>
+                        </div>
+                    </div>
+
+                    <!-- TAB 2 -->
+                    <div class="tab-pane fade" id="dim" role="tabpanel" aria-labelledby="dim-tab">
+                        <div class="row g-3">
+                            <div class="col-md-4">
+                                <label class="form-label">Ancho</label>
+                                <input type="number" step="0.01" th:field="*{skuDataLogistica.ancho}" class="form-control">
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Largo</label>
+                                <input type="number" step="0.01" th:field="*{skuDataLogistica.largo}" class="form-control">
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Altura</label>
+                                <input type="number" step="0.01" th:field="*{skuDataLogistica.altura}" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="row g-3 mt-3">
+                            <div class="col-md-4">
+                                <label class="form-label">Peso</label>
+                                <input type="number" step="0.01" th:field="*{skuDataLogistica.peso}" class="form-control">
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Tipo</label>
+                                <input type="text" th:field="*{skuDataLogistica.tipo}" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="row g-3 mt-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Fecha de Ingreso</label>
+                                <input type="date" th:field="*{skuDataLogistica.fechaIngreso}" class="form-control">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Fecha de Actualización</label>
+                                <input type="date" th:field="*{skuDataLogistica.fechaActualizacion}" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Submit -->
+                <div class="text-center mt-3">
+                    <button type="submit" class="btn btn-primary px-5">Guardar</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

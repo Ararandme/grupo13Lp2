@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro de Usuario</title>
+</head>
+<body class="bg-light">
+
+
+
+<div class="container mt-5" th:fragment="forms_fragment">
+    <div class="card shadow-sm">
+        <div class="card-header text-center bg-primary text-white">
+            <h3>Registro de Usuario</h3>
+        </div>
+        <div class="card-body">
+            <form th:action="@{/user-profile}" th:object="${userProfile}" method="post">
+
+                <div class="mb-3">
+                    <label class="form-label">Nombre</label>
+                    <input type="text" th:field="*{userProfile.nombre}" class="form-control" placeholder="Ingrese su nombre" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Apellidos</label>
+                    <input type="text" th:field="*{userProfile.apellidos}" class="form-control" placeholder="Ingrese sus apellidos" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Correo Electrónico</label>
+                    <input type="email" th:field="*{userProfile.correos}" class="form-control" placeholder="usuario@ejemplo.com" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Nombre de Usuario</label>
+                    <input type="text" th:field="*{user.username}" class="form-control" placeholder="Nombre de usuario" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Contraseña</label>
+                    <input type="password" th:field="*{user.password}" class="form-control" placeholder="Ingrese su contraseña" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Fecha de Ingreso</label>
+                    <input type="date" th:field="*{user.fechaIngreso}" class="form-control" required>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary px-5">Registrar</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
