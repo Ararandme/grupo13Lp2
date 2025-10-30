@@ -1,6 +1,6 @@
 package com.equipo13.mapy.controller;
 
-import com.equipo13.mapy.dto.DtoUserProfile;
+import com.equipo13.mapy.dto.UserProfileDto;
 import com.equipo13.mapy.entities.user.User;
 import com.equipo13.mapy.entities.user.UserProfile;
 import org.springframework.stereotype.Controller;
@@ -18,6 +18,6 @@ public class UserController {
 
     private void initLoader(Model model){
         model.addAttribute("userProfile",
-                new DtoUserProfile(new User(), new UserProfile()));
+                new UserProfileDto(new User(), new UserProfile()));
     }
 }

@@ -11,7 +11,9 @@ import java.util.List;
 @Setter
 @ToString
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
+
 public class Sku {
 
     @Id

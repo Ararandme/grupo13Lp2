@@ -17,7 +17,7 @@
         <div class="card-body">
 
             <!-- One form wraps both tabs -->
-            <form th:object="${skuAndDataLogistica}" th:action="@{/item-table}" method="post" id="itemForm">
+            <form th:object="${skuAndDataLogistica}" th:action="@{/item-table/forms}" method="post" id="itemForm">
 
                 <!-- Nav -->
                 <ul class="nav nav-tabs" id="itemTabs" role="tablist">
@@ -46,16 +46,16 @@
                             <label class="form-label">Descripción</label>
                             <input type="text" th:field="*{sku.descripcion}" class="form-control" placeholder="Ingrese la descripción">
                         </div>
-
+                    </div>
                         <div class="mb-3">
                             <label class="form-label">Thumbnail</label>
                             <input type="text" th:field="*{sku.thumbnail}" class="form-control" placeholder="URL de imagen">
                         </div>
 
-                        <div class="mb-3">
-                            <label class="form-label">Fecha de Ingreso</label>
-                            <input type="date" th:field="*{sku.fechaIngreso}" class="form-control">
-                        </div>
+<!--                      <div class="mb-3">-->
+<!--                            <label class="form-label">Fecha de Ingreso</label>-->
+<!--                            <input type="date" th:field="*{sku.fechaIngreso}" class="form-control">-->
+<!--                        </div>-->
 
                         <div class="form-check mb-3">
                             <input class="form-check-input" type="checkbox" th:field="*{sku.estado}" id="estadoCheck">
@@ -92,23 +92,22 @@
                         </div>
 
                         <div class="row g-3 mt-3">
-                            <div class="col-md-6">
-                                <label class="form-label">Fecha de Ingreso</label>
-                                <input type="date" th:field="*{skuDataLogistica.fechaIngreso}" class="form-control">
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label">Fecha de Actualización</label>
-                                <input type="date" th:field="*{skuDataLogistica.fechaActualizacion}" class="form-control">
-                            </div>
+<!--                            <div class="col-md-6">-->
+<!--                                <label class="form-label">Fecha de Ingreso</label>-->
+<!--                                <input type="date" th:field="*{skuDataLogistica.fechaIngreso}" class="form-control">-->
+<!--                            </div>-->
+<!--                            <div class="col-md-6">-->
+<!--                                <label class="form-label">Fecha de Actualización</label>-->
+<!--                                <input type="date" th:field="*{skuDataLogistica.fechaActualizacion}" class="form-control">-->
+<!--                            </div>-->
                         </div>
                     </div>
-                </div>
 
-                <!-- Submit -->
+
+<!--                 {Submit} -->
                 <div class="text-center mt-3">
                     <button type="submit" class="btn btn-primary px-5">Guardar</button>
                 </div>
-
             </form>
         </div>
     </div>
