@@ -16,6 +16,7 @@ import java.util.List;
 @Entity
 public class SkuDataLogistica {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private double ancho;
     private double largo;
@@ -25,8 +26,6 @@ public class SkuDataLogistica {
     private LocalDate fechaIngreso;
     private LocalDate fechaActualizacion;
 
-    @OneToOne
-    private Sku sku;
 
 
 }

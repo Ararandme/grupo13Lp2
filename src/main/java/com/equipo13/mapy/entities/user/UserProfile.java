@@ -1,12 +1,11 @@
 package com.equipo13.mapy.entities.user;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import jakarta.persistence.OneToOne;
+import org.springframework.boot.context.properties.bind.DefaultValue;
 
 
 @Getter
@@ -24,5 +23,6 @@ public class UserProfile {
 
 
     @OneToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 }

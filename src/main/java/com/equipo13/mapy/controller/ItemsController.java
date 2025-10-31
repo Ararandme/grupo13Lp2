@@ -8,35 +8,46 @@ import com.equipo13.mapy.repositories.items.SkuRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.support.SessionStatus;
 
 @Controller
+@SessionAttributes("dto")
 public class ItemsController {
 
     @Autowired
-    SkuRepository repository;
+    SkuRepository skuRep;
+
+    @Autowired
+    SkuDataLogisiticaRepository skuDataLogisiticaRep;
 
     @GetMapping("/item-table")
     public String getItemTable(Model model) {
-        initLoader(model);
+        model.addAttribute("skuAndDataLogistica",
+                new SkuAndDataLogistaDto(new Sku(), new SkuDataLogistica()));
         return "item-data/item_table";
     }
 
     @PostMapping("/item-table/forms")
-    public String postItemTable(SkuAndDataLogistaDto dto) {
+    public String postItemTable(@ModelAttribute SkuAndDataLogistaDto dto, Model model, SessionStatus status) {
 
-        repository.save(dto.sku());
+        Sku sku = dto.sku();
+        SkuDataLogistica skuDataLogistica = dto.skuDataLogistica();
+        sku.setSkuDataLogistica(skuDataLogistica);
+        skuDataLogisiticaRep.save(skuDataLogistica);
+
+        skuRep.save(sku);
+        status.setComplete();
+        model.addAttribute("skuAndDataLogistica",
+                new SkuAndDataLogistaDto(new Sku(), new SkuDataLogistica()));
+
+
         return "redirect:/item-table";
     }
 
 
 
-    private void initLoader(Model model){
-        model.addAttribute("skuAndDataLogistica",
-                new SkuAndDataLogistaDto(new Sku(), new SkuDataLogistica()));
-    }
+
 
 
 
