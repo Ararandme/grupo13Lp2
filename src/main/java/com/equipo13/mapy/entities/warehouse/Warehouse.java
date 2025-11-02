@@ -17,15 +17,19 @@ import java.util.List;
 public class Warehouse {
 
     @Id
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
+    @Column(nullable = false , length = 20, unique = true)
     private String warehouseAlias;
     private boolean estado;//if is block or not
 
 
-    @OneToOne
-    private WarehouseConfiguration warehouses;
+    @OneToOne(mappedBy = "warehouse", cascade = CascadeType.ALL)
+    @ToString.Exclude
+    private WarehouseConfiguration warehousesConfiguration;
 
     @OneToMany
+    @ToString.Exclude
     private List<Nave> naves;
 }

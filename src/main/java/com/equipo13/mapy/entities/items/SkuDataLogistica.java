@@ -17,7 +17,7 @@ import java.util.List;
 public class SkuDataLogistica {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     private double ancho;
     private double largo;
     private double altura;
@@ -25,6 +25,11 @@ public class SkuDataLogistica {
     private String tipo;
     private LocalDate fechaIngreso;
     private LocalDate fechaActualizacion;
+
+    @OneToOne
+    @JoinColumn(name = "sku_id", unique = true)
+    @ToString.Exclude
+    private Sku sku;
 
 
 

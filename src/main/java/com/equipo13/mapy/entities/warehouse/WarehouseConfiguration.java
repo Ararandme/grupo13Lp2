@@ -1,7 +1,5 @@
 package com.equipo13.mapy.entities.warehouse;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -16,7 +14,8 @@ import java.time.LocalDate;
 public class WarehouseConfiguration {
 
     @Id
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     private double lenghtX;
     private double widhtY;
@@ -27,5 +26,7 @@ public class WarehouseConfiguration {
 
 
     @OneToOne
+    @JoinColumn(name = "warehouse_id", unique = true, nullable = false)
+    @ToString.Exclude
     private Warehouse warehouse;
 }

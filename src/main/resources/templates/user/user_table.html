@@ -1,18 +1,34 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<html xmlns:th="http://www.thymeleaf.org">
+<body class="bg-light">
 
-</head>
-<body>
-<header th:insert="~{template/header :: header}"></header>
+<div class="container mt-5" th:fragment="user_table_fragment">
+    <h2 class="mb-4 text-center">Usuarios</h2>
 
-<div th:insert="~{user/forms_fragment :: forms_fragment}">
+    <table class="table table-striped table-hover shadow-sm rounded">
+        <thead class="table-dark">
+        <tr>
+            <th>username</th>
+            <th>nombre</th>
+            <th>apellidos</th>
+            <th>correos</th>
+        </tr>
+        </thead>
 
+        <tbody>
+        <tr th:each="user : ${users}">
+            <td th:text="${user.username}">1</td>
+            <td th:text="${user.userProfile.nombre}">Caja</td>
+            <td th:text="${user.userProfile.apellidos}"></td>
+            <td th:text="${user.userProfile.correos}"></td>
+            <td>
+                <a th:href="@{'/item/edit/' + ${user.id}}" class="btn btn-sm btn-primary">Editar</a>
+                <a th:href="@{'/item/delete/' + ${user.id}}" class="btn btn-sm btn-danger">Eliminar</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 </div>
 
-user table and user forms <h1></h1>
 </body>
 </html>

@@ -5,44 +5,43 @@ import com.equipo13.mapy.entities.items.Sku;
 import com.equipo13.mapy.entities.items.SkuDataLogistica;
 import com.equipo13.mapy.repositories.items.SkuDataLogisiticaRepository;
 import com.equipo13.mapy.repositories.items.SkuRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
 
+import java.util.List;
+
 @Controller
-@SessionAttributes("dto")
+@RequiredArgsConstructor
 public class ItemsController {
 
-    @Autowired
-    SkuRepository skuRep;
 
-    @Autowired
-    SkuDataLogisiticaRepository skuDataLogisiticaRep;
+    private final SkuRepository skuRep;
+    private final SkuDataLogisiticaRepository skuDataLogisiticaRep;
 
-    @GetMapping("/item-table")
+    @GetMapping("/item-dashboard")
     public String getItemTable(Model model) {
+        List<Sku> skus = skuRep.findAll();
+
         model.addAttribute("skuAndDataLogistica",
                 new SkuAndDataLogistaDto(new Sku(), new SkuDataLogistica()));
-        return "item-data/item_table";
+        model.addAttribute("skus", skus);
+        return "item-data/item_dashboard";
     }
 
-    @PostMapping("/item-table/forms")
-    public String postItemTable(@ModelAttribute SkuAndDataLogistaDto dto, Model model, SessionStatus status) {
+    @PostMapping("/item-dashboard/forms")
+    public String postItemTable(@ModelAttribute SkuAndDataLogistaDto dto) {
 
         Sku sku = dto.sku();
         SkuDataLogistica skuDataLogistica = dto.skuDataLogistica();
+        skuDataLogistica.setSku(sku);
         sku.setSkuDataLogistica(skuDataLogistica);
-        skuDataLogisiticaRep.save(skuDataLogistica);
-
         skuRep.save(sku);
-        status.setComplete();
-        model.addAttribute("skuAndDataLogistica",
-                new SkuAndDataLogistaDto(new Sku(), new SkuDataLogistica()));
 
-
-        return "redirect:/item-table";
+        return "redirect:/item-dashboard";
     }
 
 

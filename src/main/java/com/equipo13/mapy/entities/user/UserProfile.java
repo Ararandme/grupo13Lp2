@@ -16,7 +16,8 @@ import org.springframework.boot.context.properties.bind.DefaultValue;
 public class UserProfile {
 
     @Id
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String nombre;
     private String apellidos;
     private String correos;

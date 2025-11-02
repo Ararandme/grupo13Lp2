@@ -17,7 +17,8 @@ import java.util.List;
 public class Sku {
 
     @Id
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     private String descripcion;
     private String thumbnail;
@@ -25,9 +26,11 @@ public class Sku {
     private boolean estado; //bloqueado o no
 
   @OneToMany
+  @ToString.Exclude
   private List<SkuKardex> skuKardexs;
 
-  @OneToOne
+  @OneToOne(mappedBy = "sku", cascade = CascadeType.ALL)
+  @ToString.Exclude
   private SkuDataLogistica skuDataLogistica;
 
 

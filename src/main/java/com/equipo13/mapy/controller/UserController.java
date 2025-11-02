@@ -11,22 +11,32 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.List;
+
 @Controller
 public class UserController {
 
-    @Autowired
-    UserRepository userRepository;
-    @Autowired
-    UserProfileRepository userProfileRepository;
+    private final UserRepository userRepository;
+    private final UserProfileRepository userProfileRepository;
 
-    @GetMapping("/user-profile")
-    public String getUserTable(Model model) {
-        model.addAttribute("userProfile",
-                new UserProfileDto(new User(), new UserProfile()));
-        return "user/user_table";
+    /*@RequiredArgsConstructor*/
+    public UserController(UserRepository _userRepository,
+                          UserProfileRepository _userProfileRepository) {
+        this.userRepository = _userRepository;
+        this.userProfileRepository = _userProfileRepository;
     }
 
-    @PostMapping("/user-profile/forms")
+    @GetMapping("/user-dashboard")
+    public String getUserTable(Model model) {
+        List<User> users = userRepository.findAll();
+        model.addAttribute("users", users);
+
+        model.addAttribute("userProfile",
+                new UserProfileDto(new User(), new UserProfile()));
+        return "user/user_dashboard";
+    }
+
+    @PostMapping("/user-dashboard/forms")
     public String getProfileForm(Model model, UserProfileDto dto) {
 
         User user = dto.user();
@@ -37,7 +47,7 @@ public class UserController {
         userRepository.save(user);
 
 
-        return "redirect:/user-profile";
+        return "redirect:/user-dashboard";
     }
 
 

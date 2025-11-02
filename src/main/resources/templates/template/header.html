@@ -7,25 +7,45 @@
 
 <body>
 
-<div th:fragment="header">
-    <a  href="/" >
-        <button >
-            to index
-        </button>
-    </a>
+    <nav th:fragment="header" class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+        <div class="container-fluid">
 
-    <a  href="/user-profile" >
-        <button >
-            to user profile
-        </button>
-    </a>
+            <a class="navbar-brand fw-bold" href="/">MAPY</a>
 
-    <a  href="/item-table" >
-        <button >
-            to item table
-        </button>
-    </a>
-</div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav" aria-controls="navbarNav"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Index</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/user-dashboard">User Profile</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/item-dashboard">Item Table</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/warehouse-forms">Warehouse Forms</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/show-mappy">Show Map</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
 
 </body>
 
