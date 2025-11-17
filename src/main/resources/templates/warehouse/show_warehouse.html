@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>mapy</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<!--    <link rel="stylesheet" th:href="@{/warehouse-layout/css/botton-layer.css}">-->
 
 </head>
 <body>
@@ -12,8 +13,10 @@
 <!--table-->
 <div th:insert="~{warehouse/table_warehouse_fragment :: warehouse_table_fragment}"></div>
 <div>
+
+    <!--dropdown forms-->
  <div>
-     <form class="p-3 border rounded shadow-sm" method="get">
+     <form class="p-3 border rounded shadow-sm" method="get" >
          <div class="mb-3">
              <label for="colorSelect" class="form-label">Escoge una almacen</label>
              <select  class="form-select" id="colorSelect" name="id">
@@ -31,6 +34,10 @@
          <button type="submit" class="btn btn-primary">Submit</button>
      </form>
  </div>
+    <!--mappy show-->
+    <div th:replace="~{warehouse/warehouse-layout/warehouse-botton-layer :: warehouse-botton-layer}">
+
+    </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" ></script>

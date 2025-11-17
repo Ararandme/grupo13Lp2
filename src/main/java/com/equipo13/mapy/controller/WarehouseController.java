@@ -5,10 +5,12 @@ import com.equipo13.mapy.entities.warehouse.Warehouse;
 import com.equipo13.mapy.entities.warehouse.WarehouseConfiguration;
 import com.equipo13.mapy.service.warehouse.WarehouseService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequiredArgsConstructor
@@ -38,4 +40,6 @@ public class WarehouseController {
 
     return "redirect:/warehouse-forms";
     }
+
+
 }

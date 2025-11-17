@@ -1,22 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
 <head>
     <meta charset="UTF-8">
+    <title></title>
     <link rel="stylesheet" href="css/botton-layer.css">
 </head>
 <body>
-<div>
-    <fieldset style="" id="botton-rect-fieldset">
-        <legend >th</legend>
+<div th:fragment="warehouse-botton-layer"  id="botton-rect-container">
+    <fieldset  id="botton-rect-fieldset">
+        <legend  th:text="${warehouseWidth}"></legend>
         <svg id="botton-rect-svg">
-            <rect
-                    id="botton-rect"
-                    height="50"
-                    width="20"
-                    fill="orange"
-
-            >
+            <rect id="botton-rect"  th:width="${warehouseWidth}"  th:height="${warehouseHeight}" fill="orange">
 
             </rect>
         </svg>

@@ -1,9 +1,15 @@
+#botton-rect-container{
+    width: 100vh;
+    height: 100vh;
+}
+
 #botton-rect-fieldset{
     padding: 0;
     margin: 0;
 
-    height: 50px;
-    width: 200px;
+
+    height: 5000px;
+    width: 5000px;
 
     border: solid gray 1px;
 
@@ -35,4 +41,9 @@
 #botton-rect{
     width: 100%;
     height: 100%;
+
+}
+
+#botton-rect{
+    fill: orange ;
 }
