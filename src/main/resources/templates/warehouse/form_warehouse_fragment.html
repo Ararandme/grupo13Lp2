@@ -12,7 +12,7 @@
             <h3>Registrar Almacen</h3>
         </div>
         <div class="card-body">
-            <form th:action="@{/warehouse-forms/warehouse-form}" th:object="${warehouseDto}" method="post">
+            <form th:object="${warehouseDto}" th:action="@{/warehouse-forms/warehouse-form}"  method="post">
 
                 <div class="mb-3">
                     <label class="form-label">Nombre</label>

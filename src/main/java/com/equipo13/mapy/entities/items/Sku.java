@@ -1,6 +1,7 @@
 package com.equipo13.mapy.entities.items;
 
 
+import com.equipo13.mapy.entities.anaquel.AnaquelLineaCeldasSubdivisions;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -32,6 +33,9 @@ public class Sku {
   @OneToOne(mappedBy = "sku", cascade = CascadeType.ALL)
   @ToString.Exclude
   private SkuDataLogistica skuDataLogistica;
+
+  @OneToOne(mappedBy = "sku",cascade = CascadeType.ALL)
+  private AnaquelLineaCeldasSubdivisions anaquelLineaCeldasSubdivisions;
 
 
 

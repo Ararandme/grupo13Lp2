@@ -17,17 +17,23 @@ import java.util.List;
 public class Nave {
 
     @Id
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
+    @Column(nullable = false)
     private String naveAlias;
+
     private boolean estado;//if is block or not
 
-    @OneToOne
+    @OneToOne(mappedBy = "nave", cascade = CascadeType.ALL)
+    @ToString.Exclude
     private NaveConfiguration  naveConfiguration;
 
-    @ManyToOne
+    @ManyToOne(optional = false)
+    @ToString.Exclude
     private Warehouse warehouse;
 
     @OneToMany
+    @ToString.Exclude
     private List<Anaquel> anaqueles;
 }

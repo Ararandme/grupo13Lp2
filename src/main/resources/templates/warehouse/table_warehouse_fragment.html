@@ -23,8 +23,8 @@
             <td th:text="${warehouse.warehousesConfiguration.widhtY}"></td>
             <td th:text="${warehouse.warehousesConfiguration.heightZ}"></td>
             <td>
-                <a th:href="@{'/item/edit/' + ${warehouse.id}}" class="btn btn-sm btn-primary">Editar</a>
-                <a th:href="@{'/item/delete/' + ${warehouse.id}}" class="btn btn-sm btn-danger">Eliminar</a>
+                <a th:href="@{/warehouse/edit/{id}(id = ${warehouse.id})}" class="btn btn-sm btn-primary">Editar</a>
+                <a th:href="@{/warehouse/delete/{id}(id = ${warehouse.id})}" class="btn btn-sm btn-danger">Eliminar</a>
             </td>
         </tr>
         </tbody>

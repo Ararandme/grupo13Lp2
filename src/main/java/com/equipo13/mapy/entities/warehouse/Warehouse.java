@@ -1,10 +1,7 @@
 package com.equipo13.mapy.entities.warehouse;
 import com.equipo13.mapy.entities.nave.Nave;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -12,6 +9,7 @@ import java.util.List;
 @Getter
 @Setter
 @ToString
+@EqualsAndHashCode
 @NoArgsConstructor
 @Entity
 public class Warehouse {

@@ -1,6 +1,7 @@
 package com.equipo13.mapy.entities.anaquel;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,5 +27,7 @@ public class AnaquelLineaVistaFrontalConfiguration {
     private LocalDate fechaActualizacion;
 
     @OneToOne
+    @JoinColumn(name = "anaquel_frontalconfig_id",unique = true, nullable = false)
+    @ToString.Exclude
     private Anaquel anaquel;
 }

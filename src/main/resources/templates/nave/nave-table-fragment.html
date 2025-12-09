@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"  lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="container mt-5" th:fragment="nave_table_fragment">
+    <h2 class="mb-4 text-center">Lista de alamacenes</h2>
+
+    <table class="table table-striped table-hover shadow-sm rounded">
+        <thead class="table-dark">
+        <tr>
+            <th>id</th>
+            <th>warehouse alias</th>
+            <th>nave alias</th>
+            <th>estado activo</th>
+            <th>lenghtX</th>
+            <th>widthY</th>
+            <th>heightZ</th>
+            <th>marginSizeLeftX</th>
+            <th>marginSizeRightX</th>
+            <th>marginSizeTopY</th>
+            <th>marginSizeBottonY</th>
+            <th>pasilloWidth</th>
+            <th>pasilloQuantity</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="nave : ${naves}">
+            <td th:text="${nave.id}"></td>
+            <td th:text="${nave.warehouse.warehouseAlias}"></td>
+            <td th:text="${nave.naveAlias}"></td>
+            <td th:text="${nave.estado}"></td>
+            <td th:text="${nave.naveConfiguration.lenghtX}"></td>
+            <td th:text="${nave.naveConfiguration.widthY}"></td>
+            <td th:text="${nave.naveConfiguration.heightZ}"></td>
+            <td th:text="${nave.naveConfiguration.marginSizeLeftX}"></td>
+            <td th:text="${nave.naveConfiguration.marginSizeRightX}"></td>
+            <td th:text="${nave.naveConfiguration.marginSizeTopY}"></td>
+            <td th:text="${nave.naveConfiguration.marginSizeBottonY}"></td>
+            <td th:text="${nave.naveConfiguration.pasilloWidth}"></td>
+            <td th:text="${nave.naveConfiguration.pasilloQuantity}"></td>
+            <td>
+                <a th:href="@{/nave/edit/{id}(id = ${nave.id})}" class="btn btn-sm btn-primary">Editar</a>
+                <a th:href="@{/nave/delete/{id}(id = ${nave.id})}" class="btn btn-sm btn-danger">Eliminar</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

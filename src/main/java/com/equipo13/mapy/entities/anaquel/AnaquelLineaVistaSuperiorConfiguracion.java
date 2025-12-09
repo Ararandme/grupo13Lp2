@@ -1,6 +1,7 @@
 package com.equipo13.mapy.entities.anaquel;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -31,5 +32,7 @@ public class AnaquelLineaVistaSuperiorConfiguracion {
 
 
     @OneToOne
+    @JoinColumn(name = "anaquel_supconfig_id", nullable = false, unique = true)
+    @ToString.Exclude
     private Anaquel anaquel;
 }

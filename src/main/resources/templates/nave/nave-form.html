@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"  lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>nave config</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+<body>
+<header th:replace="~{template/header :: header}"></header>
+<div class="container mt-4">
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">Registro de Nave</h4>
+        </div>
+
+        <form th:object="${nave}" th:action="@{/nave-form/save}" method="post">
+            <div class="card-body">
+                <!-- =========================
+                 WAREHOUSE  INFORMATION
+                ========================== -->
+                <div class="mb-3">
+                    <label for="colorSelect" class="form-label">Escoge una almacen</label>
+                    <select  class="form-select" id="colorSelect" th:name="option" required>
+                        <option selected th:value="0">-- selecionar almacen --</option>
+                        <option
+                                th:each="warehouse : ${warehouseList}"
+                                th:value="${warehouse.id}"
+                                th:text="${warehouse.warehouseAlias}"
+
+                        >
+                        </option>
+                    </select>
+                </div>
+
+                <!-- =========================
+                     NAVE INFORMATION
+                ========================== -->
+                <h5 class="text-secondary mb-3">Datos Generales de la Nave</h5>
+
+                <div class="mb-3">
+                    <label class="form-label">Alias de la Nave</label>
+                    <input type="text" class="form-control" th:field="*{naveAlias}" placeholder="Ej: Nave A">
+                </div>
+
+                <div class="form-check mb-4">
+                    <input class="form-check-input" type="checkbox" th:field="*{estado}">
+                    <label class="form-check-label">¿Nave Bloqueada?</label>
+                </div>
+
+
+                <!-- =========================
+                     NAVE CONFIGURATION
+                ========================== -->
+                <h5 class="text-secondary mb-3">Configuración de la Nave</h5>
+
+                <div>
+
+                    <div class="row">
+
+                        <div class="col-md-4 mb-3">
+                            <label  class="form-label">Length X</label>
+                            <input  type="number" step="0.01" class="form-control" th:field="*{naveConfiguration.lenghtX}">
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label">Width Y</label>
+                            <input type="number" step="0.01" class="form-control" th:field="*{naveConfiguration.widthY}">
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label">Height Z</label>
+                            <input type="number" step="0.01" class="form-control" th:field="*{naveConfiguration.heightZ}">
+                        </div>
+                    </div>
+
+                    <!-- Margins -->
+                    <div class="row">
+                        <div class="col-md-3 mb-3">
+                            <label class="form-label">Margin Left X</label>
+                            <input type="number" step="0.01" class="form-control" th:field="*{naveConfiguration.marginSizeLeftX}">
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label class="form-label">Margin Right X</label>
+                            <input type="number" step="0.01" class="form-control" th:field="*{naveConfiguration.marginSizeRightX}">
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label class="form-label">Margin Top Y</label>
+                            <input type="number" step="0.01" class="form-control" th:field="*{naveConfiguration.marginSizeTopY}">
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label class="form-label">Margin Bottom Y</label>
+                            <input type="number" step="0.01" class="form-control" th:field="*{naveConfiguration.marginSizeBottonY}">
+                        </div>
+                    </div>
+
+                    <!-- Pasillos -->
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Ancho del Pasillo (pasilloWidth)</label>
+                            <input type="number" step="0.01" class="form-control" th:field="*{naveConfiguration.pasilloWidth}">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Cantidad de Pasillos</label>
+                            <input type="number" class="form-control" th:field="*{naveConfiguration.pasilloQuantity}">
+                        </div>
+                    </div>
+
+                    <!-- Dates -->
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Fecha Ingreso</label>
+                            <input type="date" class="form-control" th:field="*{naveConfiguration.fechaIngreso}">
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Fecha Actualización</label>
+                            <input type="date" class="form-control" th:field="*{naveConfiguration.fechaActualzicion}">
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="card-footer text-end">
+                <button type="submit" class="btn btn-success">Guardar Nave</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div th:insert="~{nave/nave-table-fragment :: nave_table_fragment}"></div>
+</body>
+</html>
