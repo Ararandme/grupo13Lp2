@@ -13,16 +13,24 @@
   <th:block th:each="nave : ${naves}">
       <h1 th:text="${nave.warehouse.warehouseAlias}"></h1>
       <h2 th:text="${nave.naveAlias}"></h2>
+      <!--/*top right botton left*/-->
       <div class="nave-layout"
-           th:style="'width:'  + ${nave.naveConfiguration.lenghtX} + 'px;'+
-                     'height:' + ${nave.naveConfiguration.widthY}  + 'px'">
+           th:style="'width:'  + ${nave.naveConfiguration.lenghtX} + 'px; ' +
+               'height:' + ${nave.naveConfiguration.widthY}  + 'px; ' +
+               'padding:' +
+                    ${nave.naveConfiguration.marginSizeTopY}    + 'px ' +
+                    ${nave.naveConfiguration.marginSizeRightX}  + 'px ' +
+                    ${nave.naveConfiguration.marginSizeBottonY} + 'px ' +
+                    ${nave.naveConfiguration.marginSizeLeftX}   + 'px;'">
+
+
 
           <div class="corridor"></div>
           <div>
               <p>anaquel 1</p>
               <table class="center-div">
                   <tr>
-                      <td>1</td>
+                      <td class="ce">1</td>
                       <td class="shelf-beam"></td>
                       <td>2</td>
                       <td class="shelf-beam"></td>
@@ -31,7 +39,7 @@
                   <tr class="shelf-middle-gap">
                   </tr>
                   <tr>
-                      <td>4</td>
+                      <td class="shelf-hidden" > 4</td>
                       <td class="shelf-beam"></td>
                       <td>5</td>
                       <td class="shelf-beam"></td>

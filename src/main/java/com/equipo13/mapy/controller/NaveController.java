@@ -51,6 +51,7 @@ public class NaveController {
         int warehouseListIndex = warehouseService.getWarehouseIndexById(nave);
         Warehouse warehouse = warehouseList.get(warehouseListIndex);
         warehouseList.remove(warehouse);
+
         model.addAttribute("warehouseListDefault",warehouse );
         model.addAttribute("warehouseList", warehouseList);
         model.addAttribute("nave",nave);

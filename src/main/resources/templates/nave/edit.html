@@ -10,7 +10,7 @@
 <div class="container mt-4">
     <div class="card shadow-sm">
         <div class="card-header bg-primary text-white">
-            <h4 class="mb-0">Registro de Nave</h4>
+            <h4 class="mb-0">Edita Nave</h4>
         </div>
 
         <form th:object="${nave}" th:action="@{/nave-form/edit}" method="post">
@@ -43,9 +43,6 @@
 
                 <input type="hidden" th:field="*{id}" />
                 <input  type="hidden" th:field="*{naveConfiguration.id}">
-
-                    <h1 th:text="*{id}"></h1>
-                    <h1 th:text="*{naveConfiguration.id}"></h1>
 
                 <div class="mb-3">
                     <label class="form-label">Alias de la Nave</label>
