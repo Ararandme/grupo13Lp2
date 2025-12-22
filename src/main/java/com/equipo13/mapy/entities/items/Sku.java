@@ -1,7 +1,5 @@
 package com.equipo13.mapy.entities.items;
-
-
-import com.equipo13.mapy.entities.anaquel.AnaquelLineaCeldasSubdivisions;
+import com.equipo13.mapy.entities.anaquel.AnaquelLineaCeldasSubdivision;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -35,7 +33,7 @@ public class Sku {
   private SkuDataLogistica skuDataLogistica;
 
   @OneToOne(mappedBy = "sku",cascade = CascadeType.ALL)
-  private AnaquelLineaCeldasSubdivisions anaquelLineaCeldasSubdivisions;
+  private AnaquelLineaCeldasSubdivision anaquelLineaCeldasSubdivision;
 
 
 

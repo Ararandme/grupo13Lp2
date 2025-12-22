@@ -1,5 +1,4 @@
 package com.equipo13.mapy.entities.nave;
-
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -28,6 +27,7 @@ public class NaveConfiguration {
     private double marginSizeBottonY;
     private double pasilloWidth;
     private double pasilloQuantity;
+    private int anaquelQuantity;
     private LocalDate fechaIngreso;
     private LocalDate fechaActualzicion;
 

@@ -1,0 +1,32 @@
+<div class="container" th:fragment="configSuperiorTable">
+    <h4 class="mb-3">Anaquel – Vista Superior Configuraciones</h4>
+
+    <table class="table table-sm table-bordered table-hover align-middle">
+        <thead class="table-light">
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Column Sep.</th>
+            <th>Padding</th>
+            <th>Block Width X</th>
+            <th>Total Width X</th>
+            <th>Block Height Y</th>
+            <th>Depth</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="c : ${mapyDto.anaquelLineaVistaSuperiorConfiguraciones}">
+            <td th:text="${c.id}"></td>
+            <td th:text="${c.configNombre}"></td>
+            <td th:text="${c.columnSeparationWidth}"></td>
+            <td th:text="${c.middlePaddingSize}"></td>
+            <td th:text="${c.anaquelBlockWidhtX}"></td>
+            <td th:text="${c.anaquelTotalWidthX}"></td>
+            <td th:text="${c.anaquelBlockHeightY}"></td>
+            <td th:text="${c.anaquelBlockDepth}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+

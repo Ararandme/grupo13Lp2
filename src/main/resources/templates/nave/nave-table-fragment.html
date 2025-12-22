@@ -24,6 +24,8 @@
             <th>marginSizeBottonY</th>
             <th>pasilloWidth</th>
             <th>pasilloQuantity</th>
+            <th>anaquelQuantity</th>
+            <th></th>
         </tr>
         </thead>
 
@@ -42,6 +44,7 @@
             <td th:text="${nave.naveConfiguration.marginSizeBottonY}"></td>
             <td th:text="${nave.naveConfiguration.pasilloWidth}"></td>
             <td th:text="${nave.naveConfiguration.pasilloQuantity}"></td>
+            <td th:text="${nave.naveConfiguration.anaquelQuantity}"></td>
             <td>
                 <a th:href="@{/nave/edit/{id}(id = ${nave.id})}" class="btn btn-sm btn-primary">Editar</a>
                 <a th:href="@{/nave/delete/{id}(id = ${nave.id})}" class="btn btn-sm btn-danger">Eliminar</a>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="selectWarehouseList">
+    <form class="p-3 border rounded shadow-sm mb-4"
+          method="get"
+          th:action="@{/mapy/setupMapList}">
+
+        <div class="mb-3">
+            <label for="wSelect" class="form-label">Escoge un almacén</label>
+            <select class="form-select" id="wSelect" name="warehouseId">
+                <option value="0">-- seleccionar almacén --</option>
+                <option th:each="warehouse : ${warehouses}"
+                        th:value="${warehouse.id}"
+                        th:text="${warehouse.warehouseAlias}"
+                        th:selected="${form.warehouseId} == ${warehouse.id}">
+                </option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Generate</button>
+    </form>
+</div>
+
+</body>
+</html>

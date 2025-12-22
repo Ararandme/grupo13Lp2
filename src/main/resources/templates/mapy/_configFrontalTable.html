@@ -1,0 +1,33 @@
+
+<div class="container" th:fragment="configFrontalTable">
+    <h4 class="mb-3">Anaquel – Vista Frontal Configuraciones</h4>
+
+    <table class="table table-sm table-bordered table-hover align-middle">
+        <thead class="table-light">
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Total Height Y</th>
+            <th>Total Width X</th>
+            <th>Block Height Y</th>
+            <th>Columns</th>
+            <th>Rows</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="c : ${mapyDto.anaquelLineaVistaFrontalConfigurationes}">
+            <td th:text="${c.id}"></td>
+            <td th:text="${c.configNombre}"></td>
+            <td th:text="${c.totalHeightY}"></td>
+            <td th:text="${c.totalWidthX}"></td>
+            <td th:text="${c.blockHeightY}"></td>
+            <td th:text="${c.columnAmount}"></td>
+            <td th:text="${c.rowAmount}"></td>
+
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+

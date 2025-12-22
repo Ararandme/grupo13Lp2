@@ -1,14 +1,12 @@
 package com.equipo13.mapy.entities.anaquel;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Getter
 @Setter
@@ -17,17 +15,23 @@ import java.time.LocalDate;
 @Entity
 public class AnaquelLineaVistaFrontalConfiguration {
     @Id
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(unique = true, nullable = false)
+    private String configNombre;
 
     private double totalHeightY;
     private double totalWidthX;
     private double blockHeightY;
+    private int columnAmount;
+    private int rowAmount;
 
-    private LocalDate fechaIngreso;
-    private LocalDate fechaActualizacion;
 
-    @OneToOne
-    @JoinColumn(name = "anaquel_frontalconfig_id",unique = true, nullable = false)
+    @OneToMany(mappedBy = "FrontalConfiguracion")
     @ToString.Exclude
-    private Anaquel anaquel;
+    private List<Anaquel> anaquel;
+
+
+
 }

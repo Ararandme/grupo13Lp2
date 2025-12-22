@@ -12,19 +12,21 @@ import lombok.ToString;
 @ToString
 @NoArgsConstructor
 @Entity
-public class AnaquelLineaCeldasSubdivisions {
+public class AnaquelLineaCeldasSubdivision {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     private double divisionNumber;
 
     @ManyToOne
+    @JoinColumn(name = "anaquel_linea_celda_id")
     @ToString.Exclude
-    private Anaquel anaquel;
+    private AnaquelLineaCelda anaquelLineaCelda;
 
     @OneToOne
-    @JoinColumn(name = "anaquel_subdivion_id", unique = true, nullable = false)
+    @JoinColumn(name = "anaquel_subdivion_id")
     @ToString.Exclude
     private Sku sku;
 

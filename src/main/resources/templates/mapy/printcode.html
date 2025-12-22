@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>print code</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+<body>
+<header th:insert="~{template/header :: header}"></header>
+
+<div >
+    <form class="p-3 border rounded shadow-sm mb-4"
+          method="get"
+          th:action="@{/mapy/printcode}">
+
+        <div class="mb-3">
+            <label for="wSelect" class="form-label">Escoge un almacén</label>
+            <select class="form-select" id="wSelect" name="warehouseId">
+                <option value="0">-- seleccionar almacén --</option>
+                <option th:each="warehouse : ${warehouses}"
+                        th:value="${warehouse.id}"
+                        th:text="${warehouse.warehouseAlias}">
+                </option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Generate</button>
+    </form>
+</div>
+
+
+<div class="container">
+
+    <h4 class="mb-3">Anaquel / Celda Print Table</h4>
+
+    <div class="table-responsive">
+        <table class="table table-sm table-bordered table-hover align-middle">
+            <thead class="table-light">
+            <tr>
+                <th>#</th>
+                <th>Warehouse</th>
+                <th>Nave</th>
+                <th>Anaquel</th>
+                <th>Columna</th>
+                <th>Fila</th>
+                <th>SubCelda</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr th:each="p, stat : ${mapList}">
+                <td th:text="${stat.count}"></td>
+                <td th:text="${p.warehouseId}"></td>
+                <td th:text="${p.naveId}"></td>
+                <td th:text="${p.anaquelId}"></td>
+                <td th:text="${p.anaquelColumnaId}"></td>
+                <td th:text="${p.anaquelRowId}"></td>
+                <td th:text="${p.anaquelSubCeldaId}"></td>
+            </tr>
+
+            <tr th:if="${#lists.isEmpty(mapList)}">
+                <td colspan="7" class="text-center text-muted">
+                    No data to print
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+</body>
+</html>

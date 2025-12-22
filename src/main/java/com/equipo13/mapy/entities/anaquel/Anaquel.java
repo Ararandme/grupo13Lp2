@@ -21,6 +21,7 @@ public class Anaquel {
     private int id;
 
     private int anaquelIndex;
+
     private boolean estado;//if is block or not
 
 
@@ -29,21 +30,19 @@ public class Anaquel {
     @ToString.Exclude
     private Nave nave;
 
-    @OneToOne(mappedBy = "anaquel", cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "superior_config_id")
     @ToString.Exclude
+    private AnaquelLineaVistaSuperiorConfiguracion SuperiorConfiguracion;
 
-    private AnaquelLineaVistaSuperiorConfiguracion vistaSuperiorConfiguracion;
-
-    @OneToOne(mappedBy = "anaquel", cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "frontal_config_id")
     @ToString.Exclude
+    private AnaquelLineaVistaFrontalConfiguration FrontalConfiguracion;
 
-    private AnaquelLineaVistaFrontalConfiguration vistaFrontalConfiguracion;
-
-    @OneToMany
+    @OneToMany(mappedBy = "anaquel", cascade = CascadeType.ALL)
     @ToString.Exclude
-    private List<AnaquelLineaCeldas> anaquelLineaCeldas;
+    private List<AnaquelLineaCelda> anaquelLineaCeldas;
 
-    @OneToMany
-    @ToString.Exclude
-    private List<AnaquelLineaCeldasSubdivisions> subdivisions;
+
 }
