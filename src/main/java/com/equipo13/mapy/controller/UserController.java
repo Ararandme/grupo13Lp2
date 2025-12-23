@@ -64,10 +64,12 @@ public class UserController {
         return "user/edit_user";
     }
 
-    @PostMapping("/user/forms/edit")
+    @PostMapping("/user/forms/edit/{id}")
     public String editProfile(Model model, UserProfileDto dto) {
+        var User = dto.user();
+        var UserProfile = dto.userProfile();
 
-return "redirect:/user-dashboard";
+    return "redirect:/user-dashboard";
     }
 
 

@@ -56,7 +56,6 @@ public class AnaquelService {
     public void saveConfigurationToAnaquel(AnaquelConfigForm form){
 
         List<AnaquelDto> anaquelDto = form.getAnaqueles();
-
         List<Anaquel> anaqueles = new ArrayList<>();
         List<AnaquelLineaCelda> celdas = new ArrayList<>();
         List<AnaquelLineaCeldasSubdivision> subceldas = new ArrayList<>();
