@@ -5,10 +5,10 @@ import com.equipo13.mapy.entities.user.User;
 import com.equipo13.mapy.entities.user.UserProfile;
 import com.equipo13.mapy.repositories.user.UserProfileRepository;
 import com.equipo13.mapy.repositories.user.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
@@ -48,6 +48,26 @@ public class UserController {
 
 
         return "redirect:/user-dashboard";
+    }
+
+    @GetMapping("/user-dashboard/forms/edit/{id}")
+    public String editForm(@PathVariable int id, Model model) {
+
+        User user = userRepository.findById(id).orElse(null);
+        UserProfile userProfile = user.getUserProfile();
+        UserProfileDto userProfileDto = new UserProfileDto(user, userProfile);
+
+        if (id > 0) {
+            model.addAttribute("userDto", userProfileDto);
+        }
+
+        return "user/edit_user";
+    }
+
+    @PostMapping("/user/forms/edit")
+    public String editProfile(Model model, UserProfileDto dto) {
+
+return "redirect:/user-dashboard";
     }
 
 

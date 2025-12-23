@@ -12,6 +12,7 @@
             <th>nombre</th>
             <th>apellidos</th>
             <th>correos</th>
+            <th></th>
         </tr>
         </thead>
 
@@ -22,8 +23,8 @@
             <td th:text="${user.userProfile.apellidos}"></td>
             <td th:text="${user.userProfile.correos}"></td>
             <td>
-                <a th:href="@{'/item/edit/' + ${user.id}}" class="btn btn-sm btn-primary">Editar</a>
-                <a th:href="@{'/item/delete/' + ${user.id}}" class="btn btn-sm btn-danger">Eliminar</a>
+                <a th:href="@{'/user-dashboard/forms/edit/' + ${user.id}}" class="btn btn-sm btn-primary">Editar</a>
+                <a th:href="@{'/user-dashboard/forms/edit/' + ${user.id}}" class="btn btn-sm btn-danger">Eliminar</a>
             </td>
         </tr>
         </tbody>
